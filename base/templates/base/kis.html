@@ -1,0 +1,219 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div>
+        <h1 class="about-us">
+            Kaizen Investment Stewardship
+        </h1>
+        <p class="principles-text">
+            Kaizen's Investment Stewardship team is core to Kaizen's role as a fiduciary and asset manager. As
+            stewards of our clients' assets, we are committed to constructive, long-term-focused engagement with the
+            companies our clients are invested in.
+        </p>
+    </div>
+    <div class="my_row container">
+        <div class="my_col">
+            <h1>
+                Supporting long-term financial value creation
+            </h1>
+
+        </div>
+        <div class="my_col">
+            <p>
+
+
+                Investment Stewardship is part of how Kaizen fulfils its fiduciary responsibility to our clients to
+                advance their long-term economic interests. We do this through engaging with the companies our clients
+                are
+                invested in, voting proxies for those clients who have given us authority, and encouraging sound
+                corporate
+                governance and business practices as an informed, engaged investor. In our experience, companies that
+                effectively manage material risks and opportunities in their business models, including those related to
+                sustainability, are better positioned to deliver durable, long-term financial performance. High
+                standards of
+                corporate governance, and strong boardroom and executive leadership, enable companies to be resilient
+                and
+                adaptable through macroeconomic and societal challenges that can impact their financial performance over
+                time.
+
+            </p>
+        </div>
+
+    </div>
+    <div class="my_row4">
+        <div class="my_col4">
+            <img src="{% static 'images/chat.png' %}" />
+            <h3>
+                <b>
+                    Engaging
+                </b>
+            </h3>
+            <p>
+                How we build our understanding of a company’s approach to corporate governance and business risks and
+                opportunities.
+            </p>
+        </div>
+
+
+        <div class="my_col4">
+            <img src="{% static 'images/direct.png' %}" />
+            <h3>
+                <b>
+                    Proxy voting </b>
+            </h3>
+            <p>
+                How we signal our support for or raise our concerns over a company’s corporate governance or business
+                model. </p>
+        </div>
+
+
+        <div class="my_col4">
+            <img src="{% static 'images/hat.png' %}" />
+            <h3>
+                <b>
+                    Thought Leadership </b>
+            </h3>
+            <p>
+                How we share our perspective on topical and emerging stewardship issues that may impact clients’
+                financial interests as long-term investors. </p>
+        </div>
+
+
+        <div class="my_col4">
+            <img src="{% static 'images/bars.png' %}" />
+            <h3>
+                <b>
+                    Stewardship statistics </b>
+            </h3>
+            <p>
+                How we provide insight and transparency into the actions we are taking on behalf of clients on a
+                quarterly basis. </p>
+        </div>
+    </div>
+
+    <div class="my_row3" style="background-color: #F6F0EB;">
+        <div class="my_col3">
+            <h1>
+                <b>
+                    Global reach with local expertise
+                </b>
+            </h1>
+            <p>
+                Our team spans the globe, assembling one of the largest, most diverse, and skilled investment
+                stewardship teams in the industry.
+            </p>
+        </div>
+
+
+        <div class="my_col3" style="overflow-x: hidden;">
+            <img src="{% static 'images/maps.png' %}" />
+
+        </div>
+    </div>
+
+
+
+    <div class="my_container">
+        <h1>
+            <b>
+                Promoting sound corporate governance and resilient business models
+            </b>
+        </h1>
+        <p>
+            Engagement is core to our stewardship efforts. Our engagement priorities reflect the five themes on which we
+            most frequently engage companies, where they are relevant and a source of material business risk or
+            opportunity.
+        </p>
+
+        <ul>
+
+            <li>
+                <h2>
+                    <b>
+                        Board quality and effectiveness
+
+                    </b>
+                </h2>
+                <p>
+                    Our investment stewardship efforts have always started with the board and executive leadership. The
+                    performance of the board is critical to the long-term financial success of a company and the
+                    protection of shareholders’ economic interests.
+                </p>
+            </li>
+
+
+
+            <li>
+                <h2>
+                    <b>
+                        Strategy, purpose, and financial resilience
+                    </b>
+                </h2>
+                <p>
+                    We engage on long-term corporate strategy, purpose and financial resilience to understand how boards
+                    and management are aligning their business decision-making with the company’s purpose and adjusting
+                    strategy and/or capital allocation plans as necessary as business dynamics change.
+                </p>
+            </li>
+
+
+
+            <li>
+                <h2>
+                    <b>
+                        Incentives aligned with financial value creation
+                    </b>
+                </h2>
+                <p>
+                    Executive compensation is an important tool to drive long-term financial value creation by
+                    incentivizing and rewarding the successful delivery of strategy goals and financial outperformance
+                    against peers. In our view, it is important for companies to make clear in their disclosures the
+                    connection between compensation policies and outcomes and the financial interests of long-term
+                    shareholders. </p>
+            </li>
+
+
+
+
+            <li>
+                <h2>
+                    <b>
+                        Climate and natural capital </b>
+                </h2>
+                <p>
+                    BIS engages with companies to better understand their approach to, and oversight of, material
+                    climate-related risks and opportunities as well as how they manage material natural capital impacts
+                    and dependencies, in the context of their business model and sector. </p>
+            </li>
+
+
+
+
+            <li>
+                <h2>
+                    <b>
+                        Company impacts on people </b>
+                </h2>
+                <p>
+                    In our experience, companies that invest in the relationships that are critical to their ability to
+                    meet their strategic objectives are more likely to deliver durable, long-term financial performance.
+                    By contrast, poor relationships may create adverse impacts that could expose companies to legal,
+                    regulatory, operational, and reputational risks. </p>
+            </li>
+
+        </ul>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

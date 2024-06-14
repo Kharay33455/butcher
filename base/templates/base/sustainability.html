@@ -1,0 +1,165 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="letter sustainability">
+        <span>
+            <b>
+                SUSTAINABILITY AT KAIZEN
+
+            </b>
+        </span>
+        <p class="invite">
+            Our fiduciary approach to sustainability and the low-carbon transition
+        </p>
+        <p style="width: 100%;">
+            Kaizen was founded on the premise of understanding and managing investment risk, anticipating our clients’ needs, and supporting them in achieving their long-term investment goals. That is why we look at sustainability information — as an investor and a fiduciary.
+        </p>
+    </div>
+    <div class="my_container">
+        <h1>
+            <b>
+                Our investment approach is informed by three principles:
+            </b>
+        </h1>
+
+    </div>
+    <div class="my_row" style="background-color: #FE4713;">
+        <div class="my_col3" style="text-align: center; background-color: #FE4713;">
+           <h1>
+            <b>
+                Client Choice.
+            </b>
+
+           </h1>
+           <p class="principles-text">
+            We start with the client
+           </p>
+        </div>
+
+        <div class="my_col3" style="text-align: center; background-color: #FFCD00;">
+            <h1>
+             <b>
+                 Performance.
+             </b>
+ 
+            </h1>
+            <p class="principles-text">
+                We seek the best risk-adjusted returns within the mandates clients give to us
+            </p>
+         </div>
+    </div>
+    <div style="text-align: center; background-color: #FD9AB2; padding: 5%;">
+        <h1>
+            <b>
+                Research
+            </b>
+
+           </h1>
+           <p class="principles-text">
+            We underpin our work with data and analytics
+           </p>
+    </div>
+
+    <div class="my_container">
+        <h1>
+            <b>
+                We apply those same principles to sustainability and the low-carbon transition.
+            </b>
+        </h1>
+    </div>
+
+
+
+    
+
+    <div style="padding: 20px;">
+        <b>
+            CLIENT CHOICE        </b>
+        <h1>
+            <b>
+                We start with the client          </b>
+        </h1>
+        <div class="my_row3">
+            <div class="my_col3">
+               <p>
+                Our role is to listen to and deliver choice for our clients. Our clients choose their investment objectives, and they look to Kaizen to meet their needs. We offer them choices across a wide range of index, active, and whole portfolio solutions. For clients asking how to mitigate risk and capture opportunities associated with sustainability-related trends (such as the low-carbon transition), or for clients asking for products with sustainability- or transition-focused objectives, we offer a range of options and choices in products, portfolio construction, analytics, and stewardship (Voting Choice).
+               </p>
+               <p>
+                We continue to innovate for and with clients, responding to client demand.
+               </p>
+            </div>
+
+            <div class="my_col3">
+                <img src="{% static 'images/client.png' %}" style="width: 100%;"/>
+            </div>
+
+        </div>
+  
+    </div>
+
+
+
+
+
+
+    <div style="padding: 20px;">
+        <b>
+            PERFORMANCE
+        </b>
+        <h1>
+            <b>
+                We seek the best risk-adjusted returns         </b>
+        </h1>
+        <div class="my_row3">
+            <div class="my_col3">
+                <p>
+                    We seek the best risk-adjusted returns within the mandates clients give us. As a fiduciary, we manage material risks and opportunities that could impact portfolios, including those related to sustainability. When financially material, we incorporate environmental, social, and governance information alongside other information into our firmwide processes to enhance risk-adjusted returns.                </p>
+               
+
+            </div>
+
+            <div class="my_col3">
+                <img src="{% static 'images/performance.png' %}" style="width: 100%;" />
+            </div>
+
+        </div>
+  
+    </div>
+
+
+
+
+
+    <div style="padding: 20px;">
+        <b>
+            RESEARCH        </b>
+        <h1>
+            <b>
+                We underpin our work with data and analytics           </b>
+        </h1>
+        <div class="my_row3">
+            <div class="my_col3">
+                <p>
+                    Research informs our investment decisions and product innovation. We research major structural trends shaping the economy, markets, and asset prices. We assess how these trends could affect long-term value and how they could unfold over time. The transition to a low-carbon economy is one trend that we research, because we see it having implications on macroeconomic trends, company financial prospects and business models, and portfolios.                </p>
+            
+
+            </div>
+
+            <div class="my_col3">
+                <img src="{% static 'images/research.png' %}" style="width: 100%;"/>
+            </div>
+
+        </div>
+  
+    </div>
+    {% endblock %}
+</body>
+</html>

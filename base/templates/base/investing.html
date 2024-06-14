@@ -1,0 +1,154 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div>
+        <h1 class="about-us">
+            Start Investing
+        </h1>
+        <p class="about-text">
+            Kaizen offers diverse investment opportunities tailored to your goals, timeline, and risk tolerance. While
+            understanding the basics of diversification is important, with Kaizen, you can leave the worry behind. We
+            diligently strategize your investments, aiming to help you achieve financial goals while mitigating risk.
+            Whether it's earning interest on invested funds or capitalizing on price differentials, our investment
+            advisors are dedicated to assisting you in selecting the most suitable investment options for your
+            <a href="{% url 'base:investments' %}">portfolio</a>.
+        </p>
+
+
+    </div>
+    <div class="container">
+        <h2>
+            <b>
+                Different ways to invest with Kaizen
+            </b>
+        </h2>
+
+
+        <div class="accordion" id="accordionExample">
+
+
+            {% for type in account_types %}
+            {% if not type.is_alternate %}
+            <div class="card">
+                <div class="card-header" id="heading{{type.link}}">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                            data-target="#collapse{{type.link}}" aria-expanded="true" aria-controls="collapseOne">
+                            Kaizen {{type.name}} Programme
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapse{{type.link}}" class="collapse" aria-labelledby="heading{{type.link}}"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <p class="principles-text">
+                            {{type.about}} <br>
+                            <a href="{% url 'base:create-account' %}" class="learn">Buy our {{type.name}} investment
+                                package</a>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            <div class="card">
+                <div class="card-header" id="headingSeven">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+
+                            Alternate Investment Trading with Kaizen
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <p class="principles-text">
+                            "These are our dynamic investment strategies designed for higher-than-average returns,
+                            albeit with increased risk compared to other approaches. Despite being more complex for the
+                            average trader, our AI systems have streamlined these strategies for our clients. At Kaizen,
+                            we provide a diverse range of options, from crypto assets to futures and options trading,
+                            while mitigating the associated risks and complexities." <br>
+                        </p>
+
+
+
+                        <div class="accordion2" id="accordionExample2">
+
+                            {% for type in account_types %}
+                            {% if type.is_alternate %}
+                            <div class="card">
+                                <div class="card-header" id="heading{{type.link}}">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapse{{type.link}}"
+                                            aria-expanded="false" aria-controls="collapse{{type.link}}">
+                                            {{ type.name }}
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapse{{type.link}}" class="collapse" aria-labelledby="heading{{type.link}}"
+                                    data-parent="#accordionExample2">
+                                    <div class="card-body">
+                                        <p class="principles-text">
+                                            {{type.about}}
+                                            <br>
+                                            <a href="{% url 'base:create-account' %}" class="learn">Buy our
+                                                {{type.name}} investment package</a>
+
+                                        </p>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>

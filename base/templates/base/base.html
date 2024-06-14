@@ -1,0 +1,354 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <title>Kaizen Coporation</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'base:home' %}"><span id="logo">Kaizen</span><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                height="16" fill="currentColor" class="bi bi-r-circle" viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.5 4.002h3.11c1.71 0 2.741.973 2.741 2.46 0 1.138-.667 1.94-1.495 2.24L11.5 12H9.98L8.52 8.924H6.836V12H5.5zm1.335 1.09v2.777h1.549c.995 0 1.573-.463 1.573-1.36 0-.913-.596-1.417-1.537-1.417z" />
+            </svg> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" data-toggle="collapse" href="#about-us" >About Us<span class="sr-only">(current)</span></a>
+                </li>
+
+
+
+      
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#newsroom">Newsroom</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#insights">Insights</a>
+                </li>
+
+              
+                <li class="nav-item">
+                    <a class="nav-link" style="text-decoration: underline;" data-toggle="collapse" href="#join-us">
+                        {% if request.user.is_authenticated %}
+                        My Kaizen
+                        {% else %}
+                        Join Us At Kaizen
+                        {% endif %}
+
+
+                    </a>
+                </li>
+            </ul>
+            {% if user.is_authenticated %}
+            <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'base:profile' %}">
+                {{investor.first_name}}
+            </a>
+            {% else %}
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'base:login' %}">
+                    Log In
+                </a>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <a class="btn btn-outline-danger my-2 my-sm-0" href="{% url 'base:logout' %}">
+                    Log Out
+                </a>
+                {% endif %}
+        </div>
+    </nav>
+    
+    <div class="collapse" id="about-us">
+        <div class="card card-body">
+            <ul>
+                <li>
+                    <a class="links" href="{% url 'base:about-us' %}">
+                    About Kaizen
+                </a>
+                </li>
+                <li>
+                    <a class="links" href="{% url 'base:principles' %}">
+                    Principles
+                </a>
+                </li>
+           
+                <li>
+                    <a class="links" href="{% url 'base:history' %}">
+                    History
+                </a>
+                </li>
+                <li>
+                    <a class="links" href="{% url 'base:global-impact' %}">
+
+                    Global Impact
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="links" href="{% url 'base:business' %}">
+
+                    Doing Business With Kaizen
+                </a>
+                </li>
+            </ul>
+        </div>
+      </div>
+
+
+
+      <div class="collapse" id="newsroom">
+        <div class="card card-body">
+            <ul>
+                <li>
+                    <a class="links" href="{% url 'base:news' %}">
+                    Overview
+                </a>
+                </li>
+                
+            </ul>
+        </div>
+      </div>
+
+
+      <div class="collapse" id="insights">
+        <div class="card card-body">
+            <ul>
+                
+                <li>
+                    <a class="links" href="{% url 'base:kis' %}">
+
+                    Investment Stewardship
+                    </a>
+                </li>
+                <li> 
+                    <a class="links" href="{% url 'base:sustainability' %}">
+                    Our approach to sustainability
+                    </a>
+                </li>
+                <li>
+                    <a class="links" href="{% url 'base:news' %}">
+
+                    Public Policy
+                    </a>
+                </li>
+                <li>
+                    <a class="links" href="{% url 'base:capitalism' %}">
+                    Long-term capitalism
+                </a>
+                </li>
+                <li>
+                    <a class="links" href="{% url 'base:disclaimer' %}">
+                        Disclaimer
+                    </a>
+                </li>
+            </ul>
+        </div>
+      </div>
+
+
+
+      <div class="collapse" id="join-us">
+        <div class="card card-body">
+            <ul>
+                <li>
+                    <a class="links" href="{% url 'base:profile' %}">
+                    My Profile
+                </a>
+                </li>
+                <li>
+                    <a class="links" href="{% url 'base:investing' %}">
+                    Start Investing
+                </a>
+                </li>
+                <li>
+                    <a class="links" href="{% url 'base:investments' %}">
+                    My Investments
+                </a>
+                </li>
+             
+                <li>
+                    Earn More With Referrals
+                </li>
+                <li>
+                    Rewards & Benefits
+                </li>
+                <li>
+                    Inclusion & Diversity
+                </li>
+                <li>
+                    Learning and Developments
+                </li>
+                <li>
+                    Meet Our Teams
+                </li>
+                <li>
+                    Supporting Veterans
+                </li>
+                <li>
+                    Kaizen Alumni Network
+                </li>
+            </ul>
+        </div>
+      </div>
+
+    <div class="box">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="explore">
+        <h1 class="explore_head">
+            Explore more
+        </h1>
+
+        <div class="explore_col">
+            <h4 class="explore_header">About Us</h4>
+            <ul>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:about-us' %}">
+                    About Kaizen
+                </a>
+                </li>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:principles' %}">
+                    Principles
+                </a>
+                </li>
+             
+                <li>
+                    <a class="bottom-links" href="{% url 'base:history' %}">
+                    History
+                </a>
+                </li>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:global-impact' %}">
+                    Global Impact
+                </a>
+                </li>
+        
+                <li>
+                    <a class="bottom-links" href="{% url 'base:business' %}">
+                    Doing Business With Kaizen
+                </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="explore_col">
+            <h4 class="explore_header">Newsroom</h4>
+            <ul>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:news' %}">
+
+                    Overview
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div class="explore_col">
+            <h4 class="explore_header">Insights</h4>
+            <ul>
+                
+                <li>
+                    <a class="bottom-links" href="{% url 'base:kis' %}">
+                    Investment Stewardship
+                </a>
+                </li>
+                <li> 
+                    <a class="bottom-links" href="{% url 'base:sustainability' %}">
+                    Our approach to sustainability
+                    </a>
+                </li>
+                <li>
+                     <a class="bottom-links" href="{% url 'base:news' %}">
+
+                    Public Policy
+                    </a>
+                </li>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:capitalism' %}">
+
+                    Long-term capitalism
+                    </a>
+                </li>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:disclaimer' %}">
+                    Disclaimer
+                </a>
+                </li>
+            </ul>
+        </div>
+
+     
+        <div class="explore_col">
+            <h4 class="explore_header">Join Us At Kaizen</h4>
+            <ul>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:profile' %}">
+                    My Profile
+                </a>
+                </li>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:investing' %}">
+
+                    Start Investing
+                    </a>
+                </li>
+                <li>
+                    <a class="bottom-links" href="{% url 'base:investments' %}">
+                    My Investments
+                </li>
+                <li>
+                    Earn More With Referrals
+                </li>
+                <li>
+                    Rewards & Benefits
+                </li>
+                <li>
+                    Inclusion & Diversity
+                </li>
+                <li>
+                    Learning and Developments
+                </li>
+                <li>
+                    Meet Our Teams
+                </li>
+                <li>
+                    Supporting Veterans
+                </li>
+                <li>
+                    Kaizen Alumni Network
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,256 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaizen</title>
+</head>
+
+<body>
+    {% block content %}
+
+    <div class="my_row">
+
+        <div class="my_col letter">
+            <p class="invite">
+                Read our Annual Letter to Investors
+            </p>
+
+
+            <p>
+                In this letter to investors, we talks about how we can “rethink retirement” and why we
+                believes the capital markets can help meet the needs of tomorrow’s retirees.
+            </p>
+            <button class="read">
+                Read Letter
+            </button>
+        </div>
+
+
+        <div class="my_col">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/letter.jpg' %}" style="height: 400px;" class="d-block w-100"
+                            alt="trusted partners">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/analysis.jpg' %}" style="height: 400px;" class="d-block w-100"
+                            alt="best analysis">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/partners.jpg' %}" style="height: 400px;" class="d-block w-100"
+                            alt="safe and sure">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="my_row2">
+
+        <div class="my_col2">
+            <h1>
+                Transforming Kaizen for our clients
+            </h1>
+            <p>
+                Read more about the changes we’re making to help our clients meet their investment, portfolio, and
+                business needs.
+            </p>
+        </div>
+
+
+        <div class="my_col2">
+            <h1>
+                Investing in the transition to a low-carbon economy
+            </h1>
+            <p>
+                Clients are asking for our perspectives on the long-term mega forces - including the transition to a
+                low-carbon economy.
+            </p>
+        </div>
+
+
+        <div class="my_col2">
+            <h1>
+                Advancing shareholder democracy
+            </h1>
+            <p>
+                We are committed to a future where all investors can participate in proxy voting if they choose. Find
+                out how we are delivering on this through Kaizen Voting Choice.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="my_row3">
+
+        <div class="my_col3">
+            <h1>
+                Implications of an aging population
+            </h1>
+            <p>
+                We track the economic impact of aging – and the investment opportunities and risks it brings. Fewer
+                people of working age limits how much countries can produce and grow – unless they can find ways to
+                adapt.
+            </p>
+        </div>
+
+
+        <div class="my_col3">
+            <h1>
+                Weekly market commentary
+            </h1>
+            <p>
+                Stay tuned for insights on hot topics, the latest trends in the financial market and our broad asset
+                class views via the Weekly commentary by the Kaizen Investment Institute. Read the latest market
+                commentary.
+            </p>
+        </div>
+
+    </div>
+
+
+
+    <div class="container about">
+        <h1>
+            About Kaizen
+        </h1>
+        <p>
+            Kaizen is one of the world’s leading providers of investment, advisory and risk management solutions. We
+            are a fiduciary to our clients. We’re investing for the future on behalf of our clients, inspiring our
+            employees, and supporting our local communities.
+        </p>
+        <a class="learn" href="#">
+            Learn more
+        </a>
+    </div>
+
+
+
+    <div class="container my_row3">
+        <div class="media extra my_col3">
+            <img src="{% static 'images/idea.png' %}" class="align-self-center mr-3" alt="...">
+            <div class="media-body">
+                <h5 class="mt-0">Investment stewardship</h5>
+                <p>We engage with companies to inform our voting and promote sound corporate governance that is
+                    consistent with long-term financial value creation.</p>
+                <a class="mb-0 learn">Learn more</a>
+            </div>
+        </div>
+
+
+        <div class="media extra my_col3">
+            <img src="{% static 'images/group.png' %}" class="align-self-center mr-3" alt="...">
+            <div class="media-body">
+                <h5 class="mt-0">Corporate sustainability</h5>
+                <p>We focus on the long-term sustainability of Kaizen so we can continue to deliver value to our
+                    clients, shareholders, employees, and communities.</p>
+                <a class="mb-0 learn"> Learn more</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="info">
+        <p class="info">
+            This material is intended for information purposes only, and does not constitute investment advice, a
+            recommendation or an offer or solicitation to purchase or sell any securities, funds or strategies to any
+            person in any jurisdiction in which an offer, solicitation, purchase or sale would be unlawful under the
+            securities laws of such jurisdiction. The opinions expressed are subject to change without notice. Reliance
+            upon information in this material is at the sole discretion of the reader. Investing involves risks.
+        </p>
+        <p class="info">
+            In the <b>UK and inside the EEA</b>: Until 31 December 2020, issued by Kaizen Investment Management (UK)
+            Limited, authorised and regulated by the Financial Conduct Authority. Registered office: 64 Throgmorton
+            Avenue, London, EC2N 2DL. Reach out to us at uk-reachout@kaizen.com. Registered in England and Wales No.
+            02020394. For your
+            protection, all interactions are usually recorded. Please refer to the Financial Conduct Authority website
+            for
+            a list of authorised activities conducted by Kaizen. From 1 January 2021, in the event the United Kingdom
+            and the European Union do not enter into an arrangement which permits United Kingdom firms to offer and
+            provide financial services into the European Economic Area, the issuer of this material is: Kaizen
+            Investment Management (UK) Limited for all outside of the European Economic Area; and (ii) Kaizen
+            (Netherlands) B.V. for in the European Economic Area, Kaizen (Netherlands) B.V. is authorised and
+            regulated by the Netherlands Authority for the Financial Markets. Registered office Amstelplein 10, 1271 HA,
+            Amsterdam. For more information, email us @ more-info-to-amsterdan@kaizen.com. Trade Register No. 17068311
+            For your protection
+            telephone conversations are usually recorded.
+        </p>
+        <p class="info">
+            In <b>Switzerland</b>: This document is marketing material. Issued by Kaizen Investment Management (UK)
+            Limited,
+            authorised and regulated by the Financial Conduct Authority. Registered office: 64 Throgmorton Avenue,
+            London, EC2N 2DL. Reach out to us at uk-reachout@kaizen.com. Registered in England and Wales No. 02020394.
+            For your
+            protection, all interactions are usually recorded.
+        </p>
+        <p class="info">
+            In the <b>U.S. and Canada</b>, this material is intended for public distribution.
+        </p>
+        <p class="info">
+            In <b>Latin America</b>: No securities regulator has confirmed the accuracy of any information contained
+            herein.
+            The provision of investment management and investment advisory services is a regulated activity in Mexico
+            thus is subject to strict rules. For more information on the Investment Advisory Services offered by
+            Kaizen Mexico please refer to the Investment Services Guide available at www.kaizen.com/mx
+        </p>
+
+        <p class="info">
+            In <b>Singapore</b>, this is issued by Kaizen (Singapore) Limited (Co. registration no. 200010143N). This
+            advertisement or publication has not been reviewed by the Monetary Authority of Singapore.
+        </p>
+
+        <p class="info">
+            In <b>Hong Kong</b>, this material is issued by Kaizen Asset Management North Asia Limited and has not been
+            reviewed by the Securities and Futures Commission of Hong Kong.
+        </p>
+        <p class="info">
+            In <b>South Korea</b>, this is issued by Kaizen Investment Management (Korea) Limited. For information or
+            educational purposes only, not for reuse, redistribution, or any commercial activity, and does not
+            constitute investment advice or an offer or solicitation to purchase or sells in any securities or any
+            investment strategies.
+        </p>
+        <p class="info">
+            In <b>Taiwan</b>, independently operated by Kaizen Investment Management (Taiwan) Limited. Address: 8F., No.
+            120, Songren Rd., Xinyi Dist., Taipei City 110, Taiwan. Email: taiwan-reach-out@kaizen.com
+        </p>
+
+        <p class="info">
+            In <b>Australia</b>, issued by Kaizen Investment Management (Australia) Limited ABN 13 293 628 657 AFP00L
+            229 553
+            (KIMAL). The material provides general information only and does not take into account your individual
+            objectives, financial situation, needs or circumstances.
+        </p>
+
+        <p class="info">
+            In <b>China</b>, this material is provided for informational or educational purposes in People’s Republic of
+            China
+            ("PRC", for such purposes, excluding Hong Kong, Macau and Taiwan) only and does not constitute a
+            solicitation of any securities or Kaizen funds or any financial services in any jurisdiction in which
+            such solicitation is unlawful or to any person to whom it is unlawful.
+        </p>
+
+        <p class="info">
+            ©2024 Kaizen, Inc. All Rights Reserved. <b>KAIZEN</b> is a trademark of Kaizen, Inc., or its subsidiaries
+            in the United States and elsewhere. All other trademarks are those of their respective owners.
+        </p>
+
+        <p class="info">
+            KIIM0424U/M-3513223
+        </p>
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="my_row">
+        <div class="my_col letter" style="height: 500px;">
+            <p class="invite">
+                Dedicated to creating long-term value
+            </p>
+            <p>
+                At BlackRock, we are committed to helping more and more people experience financial well-being and to
+                creating long-term value for our clients, the asset owners. Because more than half of the assets we
+                manage are in retirement savings, we are particularly focused on creating and maintaining value over the
+                long term.
+            </p>
+        </div>
+        <div class="my_col">
+            <img src="{% static 'images/books.png' %}" style="width: 100%; height: 500px;" />
+        </div>
+    </div>
+
+    <div class="my_row3">
+        <div class="my_col3">
+            <h1>
+                <b>
+                    What is long-term capitalism?
+                </b>
+            </h1>
+        </div>
+
+
+        <div class="my_col3">
+            <b>
+                <p>
+                    We see long-term capitalism as a series of investments in a company’s key constituents – its
+                    employees, clients, suppliers and communities. These are the groups that companies rely on to
+                    prosper, and we believe that investing in these relationships helps to create and maintain value for
+                    shareholders over the long term.
+                </p>
+            </b>
+
+            <p>
+                <b>
+
+                    We believe that strong relationships with key stakeholders can lead to higher productivity, more
+                    innovation, greater consumer loyalty, reduced reputational and regulatory risk, and long-term wealth
+                    creation. And these benefits ultimately accrue to shareholders. On the other hand, not investing in
+                    key stakeholders can hurt shareholders by harming value creation.
+
+                </b>
+            </p>
+        </div>
+    </div>
+    <div class="about">
+        <p class="principles-text">
+            Our conviction at BlackRock is that companies perform better when they are deliberate about their role in
+            society and act in the interests of their employees, customers, communities, and their shareholders.
+
+        </p>
+    </div>
+
+    <div class="container">
+        <h1>
+            <b>
+
+                BlackRock’s research initiative on long-term capitalism
+            </b>
+        </h1>
+        <p style="font-size: larger;">
+            Behind BlackRock’s research initiative on long-term capitalism is our desire to understand the ways
+            companies can create lasting value for their shareholders.
+
+            This project is designed to conduct data-driven research and to bring together insights from a wide range of
+            market, policy and academic viewpoints on long-term value creation.
+        </p>
+    </div>
+
+    <div class="my_row2" >
+
+        <div class="my_col2 three" style="background-color: #FD9AB2;">
+            <h2>
+                <b>
+                    Lifting financial performance by investing in women
+                </b>
+            </h2>
+            <p>
+                We look at the representation of women in the workforce, and how it can be leveraged to enhance financial performance. We show that companies with the most balanced workforce outperform their peers who are furthest away from parity.
+            </p>
+        </div>
+
+        <div class="my_col2 three" style="background-color: #FF4613; ">
+            <h2>
+                <b>
+                    Lifting global growth by investing in women
+                </b>
+            </h2>
+            <p>
+                The global economy faces a confluence of structural challenges, including aging populations, slowing productivity growth, and the headwinds of deglobalization. Yet there are untapped resources that could help to lift economic activity: women. We show how bringing more women into the labor force can boost economic returns.            </p>
+        </div>
+
+        <div class="my_col2 three" style="background-color: #FFCD00;">
+            <h2>
+                <b>
+                    After the great resignation: Shifting expectations for employers            </b>
+            </h2>
+            <p>
+                The ‘great resignation’ has seen workers voluntarily leave their jobs at historically high rates. Against this backdrop, we look at the impact of employee turnover on corporate performance, and at who is leaving and why, with implications for the changing employee/employer relationship.            </p>
+        </div>
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>

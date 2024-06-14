@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <h1 class="about-us">
+        Fund account
+    </h1>
+    <div class=" container">
+     
+        <div class="activate">
+            <p>
+                <h3>
+                    {{acc.account_type}}
+                </h3> <br>
+                <b>
+
+<p>
+                <span>
+                    Account Number
+                </span>
+                <span class="tabular">
+                    {{acc.number}}
+                </span> 
+            </p>
+
+
+
+<p>      
+                <span>
+                    Account Class
+                </span>
+                <span class="tabular">
+                    {{acc.level}}
+                </span>
+            </p>
+
+
+            <p>      
+                <span>
+                    Cost
+                </span>
+                <span class="tabular">
+                    ${{acc.balance}}
+                </span>
+            </p>
+
+
+            <p>      
+
+            {% for wall in wallets %}
+                <span>
+                    {{wall.currency}}
+                </span>
+                <span class="tabular">
+                    {{wall.address}}
+                </span> <br> <br>
+            {% endfor %}
+        </p>
+
+            </b>
+            <a href="{% url 'base:pending' number=acc.number %}" class="btn btn-block btn-success">I have completed this transaction</a>
+
+            </p>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

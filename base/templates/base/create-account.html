@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  {% block content %}
+  <h1 class="about-us">
+    Buy an investment with us
+  </h1>
+  <p class="principles-text">
+    You're just a step away from realizing the financial freedom you've always desired. Whether you're a novice
+    investor or a seasoned expert, whether you have a modest or substantial capital, and regardless of your risk
+    appetite—Kaizen has tailored solutions for everyone. 
+  <br> 
+  <small>
+    Are you unsure which plan works best for you? <br>
+    <a class="learn" href="{% url 'base:investing' %}">Familiarize</a> yourself with all our packages and plans before making any significant decisions.
+  </small>
+  </p>
+  <div class="container">
+    <h4>
+      Explore our options
+    </h4>
+
+    <form action="{% url 'base:create-account' %}" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="Account_type">Investment Type</label>
+        <select class="form-control" id="Account_type" , name="Account_type">
+          {% for type in acc_types %}
+          <option value="{{type.name}}">{{type}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Level">Investment Class</label>
+        <select class="form-control" id="Level" name="level">
+          {% for level in levels %}
+          <option value="{{level.name}}">{{level}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <small>Note: To activate this account, you must submit and complete a deposit request within the next 24 hours.
+        Failure to activate an account within this timeframe will result in its deletion. </small>
+      <button class="btn btn-block btn-success">
+        Create Account
+      </button>
+      <br>
+    </form>
+ 
+  </div>
+  <br><br />
+  {% endblock %}
+</body>
+
+</html>

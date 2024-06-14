@@ -1,0 +1,262 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="about-us">
+        <h1 style="color: whitesmoke;">
+            About Kaizen
+        </h1>
+
+        <p>
+            Kaizen is one of the world’s leading providers of investment, advisory and risk management solutions. We
+            are a fiduciary to our clients. We’re investing for the future on behalf of our clients, inspiring our
+            employees, and supporting our local communities. Watch the video to learn more.
+        </p>
+    </div>
+
+    <div>
+        <h2 class="stick">
+            What we do
+        </h2>
+
+        <p class="about-text">
+            Our purpose is to help more and more people experience financial well-being. Together with our clients,
+            we’re contributing to a more equitable and resilient world – today and for generations to come.
+        </p>
+
+        <h3 style="padding-left: 3%;">
+            Our focus
+        </h3>
+
+
+
+        <div class="my_row focus">
+
+            <div class="my_col">
+                <img src="{% static 'images/couple.png' %}" alt="happy couple" style="width: 100%;" />
+            </div>
+
+            <div class="my_col focus-text">
+                <h1>
+                    Financial well-being
+                </h1>
+                <p>
+                    We help millions of people invest to build savings that serve them throughout their lives. As it
+                    becomes harder to save for goals like retirement, how can we help more people invest for their
+                    future?
+                </p>
+                <a href="" class="learn">
+                    Better retirement for all
+                </a>
+            </div>
+
+        </div>
+
+
+
+        <div class="my_row focus">
+
+            <div class="my_col focus-text">
+                <h1>
+                    Investment access
+                </h1>
+                <p>
+                    We make investing easier and more affordable. How can we use our expertise to help more and more
+                    people invest?
+                </p>
+                <a href="" class="learn">
+                    Investing with shares
+                </a>
+            </div>
+
+
+            <div class="my_col">
+                <img src="{% static 'images/father.png' %}" alt="happy couple" style="width: 100%;" />
+            </div>
+
+        </div>
+
+
+
+        <div class="my_row focus">
+
+            <div class="my_col">
+                <img src="{% static 'images/explorer.png' %}" alt="happy couple" style="width: 100%;" />
+            </div>
+
+            <div class="my_col focus-text">
+                <h1>
+                    Acting as a fiduciary
+                </h1>
+                <p>
+                    Our investment approach is informed by three principles: we start by understanding the client’s
+                    investment objectives; we seek the best risk-adjusted returns within the scope of the mandate they
+                    give us; and we underpin our work with research, data, and analytics. We apply those same principles
+                    to sustainability and the low-carbon transition.
+                </p>
+                <a href="" class="learn">
+                    Explore sustainability at Kaizen
+                </a>
+            </div>
+
+        </div>
+
+
+
+        <div class="my_row focus">
+
+            <div class="my_col focus-text">
+                <h1>
+                    Resilient economies
+                </h1>
+                <p>
+                    Our purpose is to help more and more people experience financial well-being. In addition to offering
+                    our clients choice to meet their investment goals, we also work to bring economic opportunities to
+                    more people through the Kaizen Foundation and our employee engagement programs.
+                </p>
+                <a href="" class="learn">
+                    Why not Kaizen?
+                </a>
+            </div>
+
+
+            <div class="my_col">
+                <img src="{% static 'images/protect.png' %}" alt="happy couple" style="width: 100%;" />
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div>
+        <h2 class="stick">
+            Who are we
+        </h2>
+        <div class="my_row2">
+            <div class="my_col2">
+                <img src="{% static 'images/group.png' %}" alt="work together" />
+                <h3>
+                    19,000+
+                </h3>
+                <p>
+                    of different backgrounds, races, and nationalities
+                </p>
+
+            </div>
+
+
+            <div class="my_col2">
+                <img src="{% static 'images/messages.png' %}" alt="messages" />
+                <h3>
+                    135 languages
+                </h3>
+                <p>
+                    addressing the needs of a multilingual client base </p>
+
+            </div>
+
+
+
+            <div class="my_col2">
+                <img src="{% static 'images/world.png' %}" alt="world wide" />
+                <h3>
+                    36 countries
+                </h3>
+                <p>
+                    enabling us to help more and more people </p>
+
+            </div>
+
+        </div>
+
+        <p style="font-size: larger; padding-right: 10%; padding-left: 10%; padding-bottom: 10%;">
+            At Kaizen, we believe we’re at our best when our employees connect their personal purpose to their work
+            and our firm’s purpose. In our “What’s Your Why” series, employees share how they bring their passions to
+            what they do.
+        </p>
+
+    </div>
+
+
+    <div >
+        <h2 class="stick">
+            Who we serve
+        </h2>
+        <div class="my_row2">
+            <div class="my_col2">
+                <h2>
+                    Individuals and families
+                </h2>
+                <p>
+                    Providing choice for those investing for retirement, a new home or a child’s education.
+                </p>
+
+            </div>
+
+            <div class="my_col2">
+                <h2>
+                    Financial advisors
+                </h2>
+                <p>
+                    Helping people at all income levels invest for their futures.                </p>
+
+            </div>
+
+            <div class="my_col2">
+                <h2>
+                    Educational and nonprofit organizations                </h2>
+                <p>
+                    Working to educate more students and solve social challenges.                </p>
+
+            </div>
+        </div>
+
+
+
+        <div class="my_row2">
+            <div class="my_col2">
+                <h2>
+                    Pension plans                </h2>
+                <p>
+                    Managing the retirement savings of teachers, doctors, workers, and small business owners.                </p>
+
+            </div>
+
+            <div class="my_col2">
+                <h2>
+                    Insurance companies                </h2>
+                <p>
+                    Supporting people during life’s most difficult moments.               </p>
+
+            </div>
+
+            <div class="my_col2">
+                <h2>
+                    Governments                </h2>
+                <p>
+                    Financing new hospitals, schools, roads and other projects helping to drive economic growth.              </p>
+
+            </div>
+        </div>
+
+
+        
+
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>

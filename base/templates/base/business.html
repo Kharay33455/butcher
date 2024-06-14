@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="my_row">
+        <div class="my_col letter">
+            <p class="invite">
+                Doing business with Kaizen
+            </p>
+            <p>
+                BlackRock’s purpose is to help more and more people experience financial well-being. Consistent with
+                BlackRock’s values, we are dedicated to establishing mutually beneficial third-party partnerships.
+            </p>
+        </div>
+
+        <div class="my_col">
+            <img src="{% static 'images/business.png' %}" style="height: 400px; width: 100%;" alt="crossing bridge" />
+        </div>
+
+    </div>
+    <div class="container">
+        <h1>
+            Our Partnership
+
+        </h1>
+        <p style="width: 70%;">
+            BlackRock is committed to seeking out third-party partnerships who can provide high quality, innovative and
+            competitively priced goods and services to meet our business requirements. BlackRock believes leading
+            institutions achieve optimal performance by incorporating diversity and sustainability within its business
+            practices – including developing relationships with diverse-owned businesses within its supply base. As
+            such, BlackRock is committed to fostering the growth and development of veteran, minority and women-owned
+            businesses in the communities in which it operates. Explore these resources designed to help you do business
+            with BlackRock.
+        </p>
+    </div>
+    {% endblock %}
+</body>
+
+</html>
