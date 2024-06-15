@@ -1,0 +1,257 @@
+.links{
+    color:black
+}
+.links:visited{
+    color: black;
+}
+.links::before{
+    color: black;
+}
+.bottom-links{
+    color:whitesmoke;
+}
+.bottom-links:visited{
+    color: whitesmoke;
+}
+.bottom-links::before{
+    color: whitesmoke;
+}
+.accounts{
+    border-style: ridge;
+    margin: 5%;
+    border-radius: 4%;
+    padding: 3%;
+}
+
+.tabular{
+    float: inline-end;
+}
+
+.activate{
+    border-style: ridge;
+    color: black;
+    border-width: thin;
+    padding: 5%;
+}
+
+.focus-text{
+    padding: 10%;
+}
+
+.focus{
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    
+}
+
+.stick{
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    background-color:black;
+    color: whitesmoke;
+}
+
+.about-text{
+    font-weight: 900;
+    font-size: large;
+    width: 50%;
+    margin-left: 10%;
+    padding-bottom: 10px;
+    border-bottom: solid;
+    border-color: black;
+    border-width: 5px;
+}
+
+.principles-text{
+    font-weight: 700;
+    font-size: large;
+    width: 70%;
+    margin-left: 10%;
+    padding-bottom: 10px;
+
+}
+
+
+.mr-3{
+    width: 100px;
+}
+h1{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+#logo{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.letter{
+    background-color: black;
+    color: whitesmoke;
+    padding: 4%;
+    height: 400px;
+}
+.about-us{
+    background-color: black;
+    color: whitesmoke;
+    padding: 4%;
+}
+.invite{
+    font-size:50px;
+    font-weight: 900;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-bottom: 3%;
+}
+
+.my_row::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.my_col{
+    float: left;
+    width: 50%;
+    
+}
+
+.my_row2::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.my_col2{
+    float: left;
+    width: 33.33%;
+    padding: 5%;
+    
+}
+
+.my_row3::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.my_col3{
+    float: left;
+    width: 50%;
+    padding: 5%;
+    
+}
+
+.my_row4::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.my_col4{
+    float: left;
+    width: 25%;
+    padding: 5%;
+    
+}
+
+
+.read{
+    background-color: whitesmoke;
+    color:black;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-weight: 500;
+}
+.about{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    background-color: rgba(30, 140, 190, 0.3)
+}
+.extra{
+    margin-top: 30px;
+}
+.learn{
+    font-size: 20px; 
+    font-weight: bolder;
+    font-style: italic;
+}
+.explore{
+    background-color: black;
+    color: whitesmoke;
+
+}
+.explore::after{
+    content: '';
+    display: table;
+    clear: both;
+}
+.explore_col{
+    float: left;
+    width: 25%;
+    padding: 10px;
+}
+.explore_head{
+    color: whitesmoke; 
+    padding-top: 10px; 
+    padding-left: 10px;
+}
+.explore_header{
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+.info{
+    padding: 20px;
+}
+.my_container{
+    width: 70%;
+    padding: 5%;
+}
+.three{
+    height: 500px;
+}
+.sustainability{
+    height: 400px;
+}
+.countries{
+    width: fit-content;
+}
+.text-left{
+    font-size: x-large;
+    color: black;
+}
+.col{
+    margin: 5%;
+    width: 90%;
+}
+
+@media screen  and (max-width:600px) {
+    .my_col{
+        width:100%
+    }
+    .my_col2{
+        width: 100%;
+    }
+    .my_col3{
+        width:100%;
+    }
+    .explore_col{
+        width: 100%;
+    }
+    .my_col4{
+        width: 100%;
+    }
+    .three{
+        height: fit-content;
+    }
+    .sustainability{
+        height: 700px;
+    }
+    .countries{
+        width: 100%;
+    }
+    
+}
