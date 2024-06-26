@@ -11,117 +11,133 @@ import random
 
 def base(request):
     if request.user.is_authenticated:
+        company_name = Company_name.objects.first()
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/home.html', context)
 
-    context ={}
-    return render(request, 'base/home.html', context)
+    else:
+        company_name = Company_name.objects.first()
+        context ={'company_name':company_name}
+        return render(request, 'base/home.html', context)
 
 def about_us(request):
     if request.user.is_authenticated:
+        company_name = Company_name.objects.first()
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/about-us.html', context)
-
-    context = {}
-    return render(request, 'base/about-us.html', context)
+    else:
+        company_name = Company_name.objects.first()
+        context = {'company_name':company_name}
+        return render(request, 'base/about-us.html', context)
 
 def principles(request):
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        company_name = Company_name.objects.first()
+        context ={'investor':investor, 'company_name':company_name}
         return render (request, 'base/principles.html', context)
-
-    context ={}
+    company_name = Company_name.objects.first()
+    context ={'company_name':company_name}
     return render(request, 'base/principles.html', context)
 
 def history(request):
     if request.user.is_authenticated:
+        company_name = Company_name.objects.first()
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/history.html', context)
-
-    context = {}
+    company_name = Company_name.objects.first()
+    context = {'company_name':company_name}
     return render(request, 'base/history.html', context)
 
 def global_impact(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/global-impact.html', context)
 
-    context ={}
+    context ={'company_name':company_name}
     return render(request, 'base/global-impact.html', context)
 
 def business(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/business.html', context)
 
-    context ={}
+    context ={ 'company_name':company_name}
     return render(request, 'base/business.html', context)
 
 
 def news(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/news.html', context)
 
-    context ={}
+    context ={'company_name':company_name}
     return render(request, 'base/news.html', context)
 
 def kis(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/kis.html', context)
 
-    context ={}
+    context ={ 'company_name':company_name}
     return render(request, 'base/kis.html', context)
 
 def sustainability(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/sustainability.html', context)
 
-    context = {}
+    context = { 'company_name':company_name}
     return render(request,'base/sustainability.html', context)
 
 def capitalism(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor,'company_name':company_name}
         return render(request, 'base/capitalism.html', context)
 
-    context ={}
+    context ={'company_name':company_name}
     return render(request, 'base/capitalism.html', context)
 
 def disclaimer(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        context ={'investor':investor}
+        context ={'investor':investor, 'company_name':company_name}
         return render(request, 'base/disclaimer.html', context)
     
-    context = {}
+    context = { 'company_name':company_name}
     return render(request, 'base/disclaimer.html', context)
 
 def investing(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         account_types = Account_Type.objects.filter()
         
 
-        context ={'investor':investor, 'account_types':account_types}
+        context ={'investor':investor, 'account_types':account_types, 'company_name':company_name}
         return render(request, 'base/investing.html', context)
     account_types = Account_Type.objects.all()
-    context = {'account_types':account_types}
+    context = {'account_types':account_types, 'company_name':company_name}
     return render(request, 'base/investing.html', context)
 
 def login_request(request):
+    company_name = Company_name.objects.first()
     if request.method == 'POST':
         try:
             username = request.POST['username']
@@ -133,15 +149,16 @@ def login_request(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('base:investing'))
             else:
-                context = {'err':'Invalid username or password'}
+                context = {'err':'Invalid username or password', 'company_name':company_name}
                 return render(request, 'base/login.html', context)
         except (KeyError, Investor.DoesNotExist):
-            context = {'err':'User Does Not Exist'}
+            context = {'err':'User Does Not Exist', 'company_name':company_name}
             return render(request, 'base/login.html', context)
     else:
 
         return render(request, 'base/login.html')
 def register_request(request):
+    company_name = Company_name.objects.first()
     #checking if method is post
     if request.method == 'POST':
         try:
@@ -167,22 +184,24 @@ def register_request(request):
                 login(request, new_user)
                 return HttpResponseRedirect(reverse('base:investing'))
             else:
-                context = {'err':'Your passwords didn\'t match'}
+                context = {'err':'Your passwords didn\'t match', 'company_name':company_name}
                 return render (request, 'base/register.html', context)
         except (IntegrityError):
-            context = {'err': 'A user with this username already exists.'}
+            context = {'err': 'A user with this username already exists.', 'company_name':company_name}
             return render(request, 'base/register.html', context)
-    context = {}
+    context = {'company_name':company_name}
     return render(request, 'base/register.html', context)
 
 
 
 def logout_request(request):
+    company_name = Company_name.objects.first()
     logout(request)
     return HttpResponseRedirect(reverse('base:home'))
 
 
 def investments(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         accounts = Account.objects.filter(investor = investor)
@@ -199,13 +218,14 @@ def investments(request):
         total_bal = sum(total_bal)    
 
         
-        context = {'investor':investor, 'accounts':accounts, 'total_bal': total_bal, 'total_roi': total_payout}
+        context = {'investor':investor, 'accounts':accounts, 'total_bal': total_bal, 'total_roi': total_payout, 'company_name':company_name}
         return render(request, 'base/investments.html', context)
     
     else:
         return HttpResponseRedirect(reverse('base:login'))
     
 def create_account(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         if request.method == 'POST':
@@ -231,7 +251,7 @@ def create_account(request):
             investor = Investor.objects.get(user = request.user)
             account_types = Account_Type.objects.all()
             levels = Level.objects.all()
-            context = {'investor':investor, 'acc_types':account_types, 'levels':levels}
+            context = {'investor':investor, 'acc_types':account_types, 'levels':levels, 'company_name':company_name}
             return render(request, 'base/create-account.html', context)
     
     else:
@@ -239,11 +259,12 @@ def create_account(request):
     
 
 def activate(request, number):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         acc = Account.objects.get(number = number)
         wallets = Wallet.objects.all()
-        context = {'investor':investor, 'acc':acc, 'wallets':wallets}
+        context = {'investor':investor, 'acc':acc, 'wallets':wallets, 'company_name':company_name}
         return render(request, 'base/activate.html', context)
 
 
@@ -254,6 +275,7 @@ def activate(request, number):
     
 
 def delete(request, number):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         acc = Account.objects.get(number = number)
@@ -264,6 +286,7 @@ def delete(request, number):
     
 
 def pending(request, number):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         acc = Account.objects.get(number = number)
@@ -276,6 +299,7 @@ def pending(request, number):
     
 
 def profile(request):
+    company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         accounts = Account.objects.filter(investor=investor)
@@ -288,8 +312,21 @@ def profile(request):
                 inactive_accounts.append(acc)
         active_accounts = len(active_accounts)
         inactive_accounts= len(inactive_accounts)
-        context = {'investor':investor, 'aa':active_accounts, 'in':inactive_accounts}
+        context = {'investor':investor, 'aa':active_accounts, 'in':inactive_accounts, 'company_name':company_name}
         return render(request, 'base/profile.html', context)
     
     else:
         return HttpResponseRedirect(reverse('base:login'))
+    
+
+def letter(request):
+    if request.user.is_authenticated:
+        company_name = Company_name.objects.first()
+        investor = Investor.objects.get(user = request.user)
+        context ={'investor':investor, 'company_name':company_name}
+        return render(request, 'base/letter.html', context)
+
+    else:
+        company_name = Company_name.objects.first()
+        context ={'company_name':company_name}
+        return render(request, 'base/letter.html', context)

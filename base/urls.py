@@ -24,5 +24,6 @@ urlpatterns = [
     path('my-kaizen/my-investments/<slug:number>/delete', views.delete, name='delete'),
     path('my-kaizen/my-investments/<slug:number>/pending', views.pending, name='pending'),
     path('my-kaizen/profile', views.profile, name='profile'),
+    path('letter/', views.letter, name='letter'),
 
 ]

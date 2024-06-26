@@ -57,3 +57,9 @@ class Wallet(models.Model):
 
     def __str__(self):
         return f'{self.currency} {self.network} wallet'
+
+class Company_name(models.Model):
+    name = models.CharField(max_length=10)
+
+    def __str__(self):
+        return f'Current company name is {self.name}'
