@@ -140,8 +140,13 @@ def login_request(request):
     company_name = Company_name.objects.first()
     if request.method == 'POST':
         try:
-            username = request.POST['username']
-            usernames = username.replace(" ","")
+            if "@" in request.POST['username']:
+                possible_user = User.objects.get(email = request.POST['username'])
+                usernames = possible_user.username
+            else:
+
+                username = request.POST['username']
+                usernames = username.replace(" ","")
             password = request.POST['password1']
             passwords = password.replace(' ','')
             user = authenticate(request, username = usernames, password = passwords)
