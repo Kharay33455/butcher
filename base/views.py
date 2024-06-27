@@ -141,8 +141,11 @@ def login_request(request):
     if request.method == 'POST':
         try:
             if "@" in request.POST['username']:
-                possible_user = User.objects.get(email = request.POST['username'])
-                usernames = possible_user.username
+                try:
+                    possible_user = User.objects.get(email = request.POST['username'])
+                    usernames = possible_user.username
+                except(KeyError, User.DoesNotExist):
+                    usernames = request.POST['username']
             else:
 
                 username = request.POST['username']
@@ -234,10 +237,9 @@ def create_account(request):
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         if request.method == 'POST':
-            t_id = random.randint(11111111, 99999999)
+            t_id = random.randint(1111111111111111, 9999999999999999)
             t_id = str(t_id)
-            acn = str(investor.investor_id)
-            number = f'{t_id + acn}'
+            number = f'{t_id}'
             acc_type = request.POST['Account_type']
             account_type = Account_Type.objects.get(name = acc_type)
             lev = request.POST['level']
@@ -267,7 +269,7 @@ def activate(request, number):
     company_name = Company_name.objects.first()
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
-        acc = Account.objects.get(number = number)
+        acc = Account.objects.get(number = number, investor=investor)
         wallets = Wallet.objects.all()
         context = {'investor':investor, 'acc':acc, 'wallets':wallets, 'company_name':company_name}
         return render(request, 'base/activate.html', context)
