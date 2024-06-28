@@ -337,3 +337,69 @@ def letter(request):
         company_name = Company_name.objects.first()
         context ={'company_name':company_name}
         return render(request, 'base/letter.html', context)
+    
+"""support"""
+def support(request):
+    company_name = Company_name.objects.first()
+    if request.user.is_authenticated:
+        investor = Investor.objects.get(user = request.user)
+        tickets = Ticket.objects.filter(investor = investor)
+        context = {'investor':investor, 'company_name':company_name,'tickets':tickets}
+        return render(request, 'base/support.html', context)
+    else:
+        return HttpResponseRedirect(reverse('base:login'))
+    
+
+"""Ticket"""
+
+def ticket(request, number):
+    company_name = Company_name.objects.first()
+    if request.user.is_authenticated:
+        investor = Investor.objects.get(user = request.user)
+        ticket = Ticket.objects.get(ticket_id = number, investor= investor)
+        if request.method == 'POST':
+            if request.FILES:
+                image = request.FILES['image']
+                body = request.POST['body']
+                new_message = Message.objects.create(ticket = ticket, body=body, image=image)
+
+
+                return HttpResponseRedirect(reverse('base:ticket', args=[number]))
+            else:
+                if request.POST['body'].strip()=="":
+                    return HttpResponseRedirect(reverse('base:ticket', args=[number]))
+                else:
+
+                    body = request.POST['body']
+                    new_message = Message.objects.create(ticket = ticket, body=body)
+                
+                    return HttpResponseRedirect(reverse('base:ticket', args=[number]))
+                
+        
+        else:
+            ticket.is_read = True
+            investor.has_new_message = False
+            ticket.save()
+            investor.save()
+            messages = Message.objects.filter(ticket = ticket).order_by('time_sent')
+
+            context = {'investor':investor, 'company_name':company_name, 'ticket':ticket, 'messages':messages}
+            return render(request, 'base/ticket.html', context)
+    else:
+        return HttpResponseRedirect(reverse('base:login'))    
+    
+def new_issue(request):
+    
+    if request.user.is_authenticated:
+        request.method =='POST'
+        investor = Investor.objects.get(user = request.user)
+        ticket_id = random.randint(111111111111111111,9999999999999999999)
+        subject = request.POST['subject']
+        support = Support.objects.order_by('?').first()
+        new_ticket = Ticket.objects.create(ticket_id = ticket_id, subject=subject, investor=investor, support = support, is_read = True)
+        body = request.POST['body']
+        new_message = Message.objects.create(ticket = new_ticket, body=body)
+        reply_message = Message.objects.create(ticket=new_ticket, body ='We will reply you shortly. Note; This message is auto-generated.', from_support = True)
+        return HttpResponseRedirect(reverse('base:ticket', args= [ticket_id]))        
+    else:
+        return HttpResponseRedirect(reverse('base:login'))

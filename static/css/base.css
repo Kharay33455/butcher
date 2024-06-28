@@ -1,59 +1,106 @@
-.links{
-    color:black
+.chat-box-container {
+    position: fixed;
+    right: 1%;
+    bottom: 15%;
+    z-index: 2;
 }
-.links:visited{
+.new-issue{
+    position: fixed;
+    width: 100%;
+    background-color: rgba(30, 140, 190, 0.9);
+    z-index: 2;
+    padding: 10%;
+    display: none;
+}
+.close-icon{
+    position: absolute;
+    top: 0;
+    right: 2%;
+}
+.support_pfp {
+    width: 50px;
+    height: 50px;
+    display: inline;
+    border-radius: 50%;
+}
+
+.datess {
+    display: flex;
+    float: inline-end;
+}
+
+.new-message {
+    position: absolute;
+    top: 10%;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.links {
+    color: black
+}
+
+.links:visited {
     color: black;
 }
-.links::before{
+
+.links::before {
     color: black;
 }
-.bottom-links{
-    color:whitesmoke;
-}
-.bottom-links:visited{
+
+.bottom-links {
     color: whitesmoke;
 }
-.bottom-links::before{
+
+.bottom-links:visited {
     color: whitesmoke;
 }
-.accounts{
+
+.bottom-links::before {
+    color: whitesmoke;
+}
+
+.accounts {
     border-style: ridge;
     margin: 5%;
     border-radius: 4%;
     padding: 3%;
 }
 
-.tabular{
+.tabular {
     float: inline-end;
 }
 
-.activate{
+.activate {
     border-style: ridge;
     color: black;
     border-width: thin;
     padding: 5%;
 }
 
-.focus-text{
+.focus-text {
     padding: 10%;
 }
 
-.focus{
+.focus {
     padding-top: 30px;
     padding-bottom: 30px;
 
-    
+
 }
 
-.stick{
+.stick {
     position: sticky;
     top: 0;
     padding: 20px;
-    background-color:black;
+    background-color: black;
     color: whitesmoke;
 }
 
-.about-text{
+.about-text {
     font-weight: 900;
     font-size: large;
     width: 50%;
@@ -64,7 +111,7 @@
     border-width: 5px;
 }
 
-.principles-text{
+.principles-text {
     font-weight: 700;
     font-size: large;
     width: 70%;
@@ -74,184 +121,211 @@
 }
 
 
-.mr-3{
+.mr-3 {
     width: 100px;
 }
-h1{
+
+h1 {
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
 }
-#logo{
+
+#logo {
     font-size: xx-large;
     font-weight: bolder;
     font-family: Helvetica, Arial, sans-serif;
 }
-.letter{
+
+.letter {
     background-color: black;
     color: whitesmoke;
     padding: 4%;
     height: 400px;
 }
-.about-us{
+
+.about-us {
     background-color: black;
     color: whitesmoke;
     padding: 4%;
 }
-.invite{
-    font-size:50px;
+
+.invite {
+    font-size: 50px;
     font-weight: 900;
     font-family: Helvetica, Arial, sans-serif;
     margin-bottom: 3%;
 }
 
-.my_row::after{
+.my_row::after {
     content: '';
     display: table;
     clear: both;
 }
 
-.my_col{
+.my_col {
     float: left;
     width: 50%;
-    
+
 }
 
-.my_row2::after{
+.my_row2::after {
     content: '';
     display: table;
     clear: both;
 }
 
-.my_col2{
+.my_col2 {
     float: left;
     width: 33.33%;
     padding: 5%;
-    
+
 }
 
-.my_row3::after{
+.my_row3::after {
     content: '';
     display: table;
     clear: both;
 }
 
-.my_col3{
+.my_col3 {
     float: left;
     width: 50%;
     padding: 5%;
-    
+
 }
 
-.my_row4::after{
+.my_row4::after {
     content: '';
     display: table;
     clear: both;
 }
 
-.my_col4{
+.my_col4 {
     float: left;
     width: 25%;
     padding: 5%;
-    
+
 }
 
 
-.read{
+.read {
     background-color: whitesmoke;
-    color:black;
+    color: black;
     padding-right: 5%;
     padding-left: 5%;
     font-weight: 500;
 }
-.about{
+
+.about {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 10%;
     padding-bottom: 10%;
     background-color: rgba(30, 140, 190, 0.3)
 }
-.extra{
+
+.extra {
     margin-top: 30px;
 }
-.learn{
-    font-size: 20px; 
+
+.learn {
+    font-size: 20px;
     font-weight: bolder;
     font-style: italic;
 }
-.explore{
+
+.explore {
     background-color: black;
     color: whitesmoke;
 
 }
-.explore::after{
+
+.explore::after {
     content: '';
     display: table;
     clear: both;
 }
-.explore_col{
+
+.explore_col {
     float: left;
     width: 25%;
     padding: 10px;
 }
-.explore_head{
-    color: whitesmoke; 
-    padding-top: 10px; 
+
+.explore_head {
+    color: whitesmoke;
+    padding-top: 10px;
     padding-left: 10px;
 }
-.explore_header{
+
+.explore_header {
     text-decoration: underline;
     margin-bottom: 20px;
 }
-.info{
+
+.info {
     padding: 20px;
 }
-.my_container{
+
+.my_container {
     width: 70%;
     padding: 5%;
 }
-.three{
+
+.three {
     height: 500px;
 }
-.sustainability{
+
+.sustainability {
     height: 400px;
 }
-.countries{
+
+.countries {
     width: fit-content;
 }
-.text-left{
+
+.text-left {
     font-size: x-large;
     color: black;
 }
-.col{
+
+.col {
     margin: 5%;
     width: 90%;
 }
 
-@media screen  and (max-width:600px) {
-    .my_col{
-        width:100%
+@media screen and (max-width:600px) {
+    .my_col {
+        width: 100%
     }
-    .my_col2{
+
+    .my_col2 {
         width: 100%;
     }
-    .my_col3{
-        width:100%;
-    }
-    .explore_col{
+
+    .my_col3 {
         width: 100%;
     }
-    .my_col4{
+
+    .explore_col {
         width: 100%;
     }
-    .three{
+
+    .my_col4 {
+        width: 100%;
+    }
+
+    .three {
         height: fit-content;
     }
-    .sustainability{
+
+    .sustainability {
         height: 700px;
     }
-    .countries{
+
+    .countries {
         width: 100%;
     }
-    
+
 }
