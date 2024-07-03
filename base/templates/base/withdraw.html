@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<h1 class="about-us">
+    Place withdrawal request
+</h1>
+
+<div class="form-wrapper">
+    {% if err %}
+    <p style="color: red; text-align: center;">
+        {{err}}
+    </p>
+    {% endif %}
+    <h2>
+        Fill out the form below.
+    </h2>
+    <div>
+        <form action="{% url 'base:withdraw' %}" method="post">
+            {%csrf_token%}
+            <label for="withdrawal_method">Choose withdrawal method</label>
+            <select class="form-control" name="withdrawal_method" id="withdrawal_method">
+                {% for wallet in wallets %}
+                <option value="{{wallet.currency}}">{{wallet.currency}}</option>
+                {% endfor %}
+            </select> <br> 
+            <p>
+                Available funds: <span style="color: green;">${{investor.holdings}}</span>
+            </p> 
+            <label for="withdrawal_account">Choose withdrawal account</label>
+            <select name="withdrawal_account" id="withdrawal_account" class="form-control">
+                {% for aa in active_accounts %}
+                <option value="{{aa.number}}">
+                    <div>
+                              <li class="list-group-item">{{aa.number}}</li>
+                              <li class="list-group-item"> {{aa.account_type}} </li>
+                              <li class="list-group-item"> {{aa.balance}} </li>
+                          
+                    </div>
+                </option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="amount">Withdrawal amount: </label>
+            $<input type="number" name="amount" id="amount" required placeholder="Amount in dollars">
+            <br> <br>
+            <label for="withdrawal_address" >Wallet address:</label>
+            <input required class="form-control" placeholder="Enter your wallet address to receive your payment" name="address"> <br>
+            <label for="pin">Withdrawal pin:</label>
+            <input class="form-control" placeholder="Enter 6 digits withdrawal pin" name="pin" id="pin"> <br>
+            <button class="btn btn-block btn-outline-success" type="submit">Place request</button>
+        </form>
+        <small>
+            "For security reasons, we will delay this payment by 24 hours whi;e contact you for additional confirmation."        </small>
+    </div>
+</div>
+{% endblock %}

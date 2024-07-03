@@ -312,11 +312,15 @@ def profile(request):
         accounts = Account.objects.filter(investor=investor)
         active_accounts =[]
         inactive_accounts = []
+        holdings = []
         for acc in accounts:
             if acc.is_active == True:
                 active_accounts.append(acc)
+                holdings.append(acc.balance)
             else:
                 inactive_accounts.append(acc)
+        investor.holdings = sum(holdings)
+        investor.save()
         active_accounts = len(active_accounts)
         inactive_accounts= len(inactive_accounts)
         context = {'investor':investor, 'aa':active_accounts, 'in':inactive_accounts, 'company_name':company_name}
@@ -403,3 +407,85 @@ def new_issue(request):
         return HttpResponseRedirect(reverse('base:ticket', args= [ticket_id]))        
     else:
         return HttpResponseRedirect(reverse('base:login'))
+    
+
+def withdraw(request):
+    company_name = Company_name.objects.first()
+    if request.user.is_authenticated:
+        investor = Investor.objects.get(user = request.user)
+        wallets = Wallet.objects.all()
+        active = Account.objects.filter(investor = investor, is_active =True)
+        context = {'company_name':company_name, 'investor':investor, 'wallets':wallets, 'active_accounts':active}
+        if investor.withdrawal_pin is None:
+            return render(request, 'base/pin.html', context)
+        else:
+            #place new requests
+            if request.method == 'POST':
+                #validate user pin is correct
+                if request.POST['pin']== investor.withdrawal_pin:
+
+                    withdraw_id = random.randint(1111111111111111,9999999999999999999)
+
+                    amount = request.POST['amount']
+                    account_number = request.POST['withdrawal_account']
+                    account = Account.objects.get(number = account_number)
+                    #Validate user has enough money in holdings to transfer
+                    if int(amount) < int(account.balance):
+                        account.balance = int(account.balance) - int(amount)
+                        account.save()
+
+                        wallet_type = request.POST['withdrawal_method']
+                        wallet_address = request.POST['address']
+                        new_withdrawal = Withdrawal_request.objects.create(investor=investor, withdrawal_id = withdraw_id, amount = amount, wallet_type = wallet_type, wallet_address = wallet_address)
+                        return HttpResponseRedirect(reverse('base:withdrawals'))
+                    else:
+                        err = 'Insufficient balance'
+                        context = {'company_name':company_name, 'investor':investor, 'wallets':wallets,'err':err, 'active_accounts':active}
+                        return render (request, 'base/withdraw.html', context)
+
+                else:
+                    err = 'Invalid transaction pin'
+                    context = {'company_name':company_name, 'investor':investor, 'wallets':wallets,'err':err, 'active_accounts':active}
+
+                    return render(request, 'base/withdraw.html', context)
+            else:
+
+                return render(request, 'base/withdraw.html', context)
+    else:
+        return HttpResponseRedirect(reverse('base:login'))
+    
+def set_pin(request):
+    company_name = Company_name.objects.first()
+    if request.user.is_authenticated:
+        investor = Investor.objects.get(user = request.user)
+        request.method = 'POST'
+        pin1 = request.POST['pin1']
+        pin2 = request.POST['pin2']
+        if pin1 == pin2:
+            if len(pin1)==6:
+
+                investor.withdrawal_pin = pin1
+                investor.save()
+                return HttpResponseRedirect(reverse('base:profile'))
+            else:
+                msg = 'PIN must be 6 digits'
+                context = {'company_name':company_name, 'investor':investor, 'msg':msg}
+                return render(request, 'base/pin.html', context)
+        else:
+            msg = 'PINs do not match'
+            context = {'company_name':company_name, 'investor':investor, 'msg':msg}
+            return render(request, 'base/pin.html', context)
+    else:
+        return HttpResponseRedirect(reverse('base:login'))
+    
+def withdrawal_request(request):
+    company_name = Company_name.objects.first()
+    if request.user.is_authenticated:
+        investor = Investor.objects.get(user = request.user)
+        withdrawal_requests = Withdrawal_request.objects.filter(investor = investor)
+        context = {'withdrawal_requests':withdrawal_requests, 'company_name': company_name, 'investor':investor}
+        return render(request, 'base/withdrawal_requests.html', context)
+
+    else:
+        return HttpResponseRedirect(reverse('base:login'))
+

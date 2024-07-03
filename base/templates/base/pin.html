@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+<div>
+    <h1 class="about-us">
+        Set user pin
+    </h1>
+    {% if msg %}
+    <p style="color: red; text-align: center;">
+        {{msg}}
+    </p>
+    {% endif %}
+    <div class="form-wrapper">
+        <div>
+            <h2>
+                Set transaction pin
+            </h2>
+            <p class="principles-text">
+            <p>Dear {{investor.first_name}},</p>
+
+            You are receiving this message because you have not yet set a transaction PIN for transferring funds
+            from your {{company_name.name}} account. For security reasons, we recommend selecting a secure 6-digit
+            PIN that you do not use elsewhere. Please note that anyone with access to this PIN could potentially
+            access your account and initiate withdrawals.
+
+
+            </p>
+            <form action="{% url 'base:pin' %}" method="post">
+                {% csrf_token %}
+                <p>
+                    <input class="form-control" type="number" required name="pin1" minlength="6" maxlength="6" id=""
+                        placeholder="Enter PIN again">
+                </p> <br>
+                <p>
+                    <input class="form-control" type="number" required name="pin2" minlength="6" maxlength="6" id=""
+                        placeholder="Enter PIN again">
+                </p> <br>
+                <p>
+                <label for="understand">"I comprehend the conditions for creating this PIN."</label>
+                <input type="checkbox" id="understand" required> </p><br>
+                <button class="btn btn-block btn-outline-primary" type="submit">Create PIN</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

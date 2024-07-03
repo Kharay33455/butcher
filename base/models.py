@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
@@ -32,6 +33,7 @@ class Investor(models.Model):
     earnings = models.IntegerField(default=0)
     level = models.CharField(default='Silver', max_length=10)
     has_new_message = models.BooleanField(default=False)
+    withdrawal_pin = models.CharField(blank=True, null=True, max_length=6)
     def __str__(self):
         return f'{self.first_name} {self.last_name}, user {self.investor_id}'
 
@@ -110,3 +112,14 @@ class Message(models.Model):
             return f'Message from {self.ticket.investor.first_name} {self.ticket.investor.last_name} / is_replied? {self.is_replied}'
 
 
+class Withdrawal_request(models.Model):
+    investor = models.ForeignKey(Investor, on_delete=models.CASCADE)
+    withdrawal_id = models.CharField(max_length=20)
+    amount = models.IntegerField()
+    wallet_type = models.CharField(max_length=10)
+    wallet_address = models.CharField(max_length=40)
+    date_placed = models.DateTimeField(auto_now_add=True)
+    is_pending = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.withdrawal_id}'

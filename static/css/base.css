@@ -4,6 +4,12 @@
     bottom: 15%;
     z-index: 2;
 }
+.form-wrapper{
+    margin: 5%;
+    padding: 3%;
+    border-style: solid;
+    border-width: thin;
+}
 .new-issue{
     position: fixed;
     width: 100%;
