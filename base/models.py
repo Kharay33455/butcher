@@ -123,3 +123,10 @@ class Withdrawal_request(models.Model):
 
     def __str__(self):
         return f'{self.withdrawal_id}'
+    
+class MailErrors(models.Model):
+    mail = models.EmailField()
+    error = models.TextField()
+    
+    def __str__(self):
+        return f' Failed to deliver to {self.mail}'

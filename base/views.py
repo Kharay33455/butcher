@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from .models import *
 import random
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -488,4 +489,19 @@ def withdrawal_request(request):
 
     else:
         return HttpResponseRedirect(reverse('base:login'))
+    
+def test(request):
+    if request.method == 'POST':
+        try:
+            
+
+            send_mail(subject='Test one', message='This is a test', from_email='do-not-reply@cashien.online', recipient_list=['yueh33455@gmail.com'], fail_silently=False)
+        except Exception as e:
+            MailErrors.objects.create(mail = 'yueh33455@gmail.com', error = e)
+        
+        return HttpResponseRedirect('/admin/')
+    else:
+
+        context = {'company_name': Company_name.objects.first()}
+        return render(request, 'base/test.html', context)
 

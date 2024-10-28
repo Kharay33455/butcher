@@ -31,5 +31,6 @@ urlpatterns = [
     path('my-account/profile/withdraw', views.withdraw, name='withdraw'),
     path('my-account/profile/withdraw/set-pin', views.set_pin, name='pin'),
     path('profile/withdrawal_request',views.withdrawal_request, name = 'withdrawals'),
+    path('test', views.test, name='test'),
 
 ]
