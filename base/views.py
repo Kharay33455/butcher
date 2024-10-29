@@ -6,6 +6,38 @@ from django.db import IntegrityError
 from .models import *
 import random
 from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+
+
+###functions for code
+
+
+##Mail sending function import send_mail and EmailMultiAlternatives from django.core.mail.
+# ### Import render_ro_string from django.template.loader
+
+#declare send_mail function with subject(str) from_mail(str) mail_adds(obj) message(str)
+def send_email(subject, from_email, mail_adds, message):
+
+    
+    # Prepare the plain text and HTML content
+    
+
+    # Create the email
+    for mail, firstName in mail_adds.items():
+        html_content = render_to_string('base/confirmation.html', {'first_name': firstName, 'body':message})
+        email = EmailMultiAlternatives(subject, from_email, [mail])
+        email.attach_alternative(html_content, "text/html")
+    
+    # Send the email
+        try:
+
+            email.send()
+        except Exception as e:
+            MailErrors.objects.create(email = mail, error = e)
+
+
+
 
 
 # Create your views here.
@@ -183,18 +215,39 @@ def register_request(request):
             email = email.replace(' ','')
             password1 = password1.replace(' ','')
             password2 = password2.replace(' ','')
-            if password1 == password2:
-
-                new_user = User.objects.create_user(username=username, first_name = first_name, 
-                                                    last_name =last_name, password=password1, email= email)
-                new_user.save()
-                investor = Investor.objects.create(user = new_user, first_name = first_name,
-                                                    last_name = last_name, investor_id=username)
-                login(request, new_user)
-                return HttpResponseRedirect(reverse('base:investing'))
-            else:
-                context = {'err':'Your passwords didn\'t match', 'company_name':company_name}
+            try:
+                User.objects.get(username = username)
+                context = {'err':'A user with this investor ID already exist, try signing in instead.', 'company_name':company_name}
                 return render (request, 'base/register.html', context)
+            except(KeyError, User.DoesNotExist):
+
+                if password1 == password2:
+                    code = random.randint(100000, 900000)
+                    print(code)
+                    
+                    send_email(subject = 'Confirm your email.', from_email='do-not-reply@cashien.online', mail_adds={'first_name':first_name, 'email':email}, message =code )
+                    #Only create a temp user if it doesnt exist 
+                    try :
+                        temp_user = TempUser.objects.get(email = email)
+                        err = f'An unverified user with this email {email} already exist. Confirm email to finish with your registration.'
+                        temp_user.code = code
+                        temp_user.save()
+                        context = {'company_name': company_name, 'email': email, 'password': password1, 'err':err, 'first_name': first_name}
+                        return render(request, 'base/confirmation_page.html', context)
+                    except (KeyError, TempUser.DoesNotExist):
+
+                        temp_user = TempUser.objects.create(first_name = first_name, last_name = last_name, username = username, password = password1, email = email, code = code)
+
+                        context = {'company_name': company_name, 'email': email, 'password': password1, 'first_name': first_name}
+
+                        return render(request, 'base/confirmation_page.html', context)
+
+
+
+
+                else:
+                    context = {'err':'Your passwords didn\'t match', 'company_name':company_name}
+                    return render (request, 'base/register.html', context)
         except (IntegrityError):
             context = {'err': 'A user with this username already exists.', 'company_name':company_name}
             return render(request, 'base/register.html', context)
@@ -491,17 +544,38 @@ def withdrawal_request(request):
         return HttpResponseRedirect(reverse('base:login'))
     
 def test(request):
+
+
+    context = {'company_name': Company_name.objects.first()}
+    return render(request, 'base/confirmation_page.html', context)
+
+def confirm(request):
+
+
     if request.method == 'POST':
-        try:
-            
+        code = request.POST['code']
+        email = request.POST['email']
+        temp_user = TempUser.objects.get(email = email)
 
-            send_mail(subject='Test one', message='This is a test', from_email='do-not-reply@cashien.online', recipient_list=['yueh33455@gmail.com'], fail_silently=False)
-        except Exception as e:
-            MailErrors.objects.create(mail = 'yueh33455@gmail.com', error = e)
+        if code == temp_user.code:
+
+            new_user = User.objects.create_user(username=temp_user.username, first_name = temp_user.first_name, 
+                                                    last_name =temp_user.last_name, password=temp_user.password, email= temp_user.email)
+            new_user.save()      
+
+    
+            investor = Investor.objects.create(user = new_user, first_name = new_user.first_name,
+                                                last_name = new_user.last_name, investor_id=new_user.username)
+            login(request, new_user)
+            temp_user.delete()
+            return HttpResponseRedirect(reverse('base:investing'))
         
-        return HttpResponseRedirect('/admin/')
+        else:
+            error = 'Incorrect verification code'
+
+            company_name = Company_name.objects.first()
+            context = {'err':error, 'company_name': company_name, 'email': email}
+            return render(request, 'base/confirmation_page.html', context)
+    
     else:
-
-        context = {'company_name': Company_name.objects.first()}
-        return render(request, 'base/test.html', context)
-
+        return HttpResponseRedirect(reverse('base:investing'))

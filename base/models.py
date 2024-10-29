@@ -130,3 +130,14 @@ class MailErrors(models.Model):
     
     def __str__(self):
         return f' Failed to deliver to {self.mail}'
+    
+class TempUser(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+    email = models.EmailField()
+    code = models.CharField(max_length=7)
+
+    def __str__(self):
+        return f'Unconfirmed user {self.first_name}'

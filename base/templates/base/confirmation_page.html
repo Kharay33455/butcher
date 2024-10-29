@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col container">
+    {% if err %}
+    <p style="font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: #e71313;">
+        {{err}}
+    </p>
+    {% endif %}
+    <h2>
+        One more step, {{first_name}}...
+    </h2>
+    <p>
+        Enter the 6 digits code we sent to {{email}} to confirm your email
+    </p>
+    <form action="{% url 'base:confirm' %}" , method="post" style="z-index: 4;">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="code">Verification number:</label>
+            <input type="number" class="form-control" id="code" name="code" required
+                placeholder="Enter the 6 digits code we sent to you to confirm your identity.">
+                <input type="email" name="email" id="email" hidden readonly required value="{{email}}">
+        </div>
+<br>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
