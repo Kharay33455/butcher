@@ -307,6 +307,26 @@ h1 {
     margin: 5%;
     width: 90%;
 }
+.money{
+    font-size: 50px; font-weight: bolder;
+}
+
+.balance{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 30px;
+    
+}
+.percent{
+    font-size: 30px;
+    color: green;
+}
+.total{
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: white;
+}
 
 @media screen and (max-width:600px) {
     .my_col {
@@ -339,6 +359,15 @@ h1 {
 
     .countries {
         width: 100%;
+    }
+    .balance{
+        display: block;
+    }
+    .money{
+        font-size: 30px;
+    }
+    .percent{
+        font-size: 17px;
     }
 
 }

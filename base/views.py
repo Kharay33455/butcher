@@ -393,7 +393,11 @@ def profile(request):
         investor.save()
         active_accounts = len(active_accounts)
         inactive_accounts= len(inactive_accounts)
-        context = {'investor':investor, 'aa':active_accounts, 'in':inactive_accounts, 'company_name':company_name}
+        bal = investor.holdings + investor.earnings
+        percentage = investor.earnings / investor.holdings
+        percentage *= 100
+        
+        context = {'investor':investor, 'aa':active_accounts, 'in':inactive_accounts, 'company_name':company_name, 'bal':bal, 'percentage':int( percentage )}
         return render(request, 'base/profile.html', context)
     
     else:

@@ -1,20 +1,16 @@
 {% extends 'base/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block content %}
 
-<body>
-    {% block content %}
-        <h1 class="about-us">
-            My Profile
-        </h1>
-    <div class="container">
+<div style="max-width: 100%; overflow-x: hidden;">
+
+
+
+    <h1 class="about-us">
+        My Profile
+    </h1>
+    <div class="container box">
 
 
         <div class="my_row">
@@ -24,46 +20,46 @@
                     Overview
                 </h2>
 
-<b>
-                <p>
-                    <span>
-                        Full Name
-                    </span>
-                    <span class="tabular">
-                        {{investor.first_name}} {{investor.last_name}}
-                    </span>
-                </p>
+                <b>
+                    <p>
+                        <span>
+                            Full Name
+                        </span>
+                        <span class="tabular">
+                            {{investor.first_name}} {{investor.last_name}}
+                        </span>
+                    </p>
 
 
-                <p>
-                    <span>
-                        Investor ID
-                    </span>
-                    <span class="tabular">
-                        {{investor.investor_id}}
-                    </span>
-                </p>
+                    <p>
+                        <span>
+                            Investor ID
+                        </span>
+                        <span class="tabular">
+                            {{investor.investor_id}}
+                        </span>
+                    </p>
 
-                <p>
-                    <span>
-                        Referrals
-                    </span>
-                    <span class="tabular">
-                        {{investor.referrals}}
-                    </span>
-                </p>
+                    <p>
+                        <span>
+                            Referrals
+                        </span>
+                        <span class="tabular">
+                            {{investor.referrals}}
+                        </span>
+                    </p>
 
-                <p>
-                    <span>
-                        Email
-                    </span>
-                    <span class="tabular">
-                        {{investor.user.email}}
-                    </span>
-                </p>
+                    <p>
+                        <span>
+                            Email
+                        </span>
+                        <span class="tabular">
+                            {{investor.user.email}}
+                        </span>
+                    </p>
 
 
-            </b>
+                </b>
 
             </div>
 
@@ -74,43 +70,43 @@
                 <b>
                     <a href="{%url 'base:investments'%}">
 
-                    <p>
-                        <span>
-                            Total Accounts
-                        </span>
-                        <span class="tabular">
-                        {{aa|add:in}}
-                        </span>
-                    </p>
+                        <p>
+                            <span>
+                                Total Accounts
+                            </span>
+                            <span class="tabular">
+                                {{aa|add:in}}
+                            </span>
+                        </p>
 
 
-                    <p>
-                        <span>
-                            Active Accounts
-                        </span>
-                        <span class="tabular">
-                        {{aa}}
-                        </span>
-                    </p>
+                        <p>
+                            <span>
+                                Active Accounts
+                            </span>
+                            <span class="tabular">
+                                {{aa}}
+                            </span>
+                        </p>
 
 
-                    <p>
-                        <span>
-                            Inactive Accounts
-                        </span>
-                        <span class="tabular">
-                        {{in}}
-                        </span>
-                    </p>
+                        <p>
+                            <span>
+                                Inactive Accounts
+                            </span>
+                            <span class="tabular">
+                                {{in}}
+                            </span>
+                        </p>
 
-                </a>
+                    </a>
                 </b>
             </div>
 
         </div>
 
 
-
+        <!--
         <div class="my_row2">
 
 
@@ -149,6 +145,44 @@
             </div>
 
         </div>
+        -->
+        <div class="balance"
+            style="padding: 30px; background-repeat:round; background-size: contain; background-image: url({% static 'images/backgroud.jpeg' %});">
+
+            <div class="total">
+                <b>
+                    Total Holdings
+                </b>
+                <p class="money">
+                    ${{bal}}
+                </p>
+            </div>
+
+
+            <div class="total">
+                <b>
+                    Invested
+                </b>
+
+                <p class="money">
+                    ${{investor.holdings}} <span class="percent"> +{{percentage}}% </span>
+                </p>
+            </div>
+
+
+            <div class="total">
+                <b>
+                    Earned
+                </b>
+                <p class="money">
+                    ${{investor.earnings}}
+                </p>
+            </div>
+
+        </div>
+
+        <br> <br>
+
         <div>
             <a class="btn btn-block btn-outline-success" href="{% url 'base:withdraw' %}">Withdraw</a>
         </div>
@@ -156,9 +190,7 @@
         <div>
             <a class="btn btn-block btn-outline-warning" href="{% url 'base:withdrawals' %}">Withdrawals</a>
         </div>
-        <br>    
+        <br>
     </div>
-    {% endblock %}
-</body>
-
-</html>
+</div>
+{% endblock %}
