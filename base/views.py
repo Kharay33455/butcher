@@ -226,8 +226,10 @@ def register_request(request):
 
                 if password1 == password2:
                     code = random.randint(100000, 900000)
+
+                    send_mail(subject=f'Welcome to {company_name.name}', message=f'Hello {first_name}, your verification code is {code}. Use it to complete your verification. If you did not initiate this transaction, simply ignore this message', from_email='do-not-reply@cashien.online', recipient_list=[email], fail_silently=False)
                     
-                    send_email(subject = 'Confirm your email.', from_email='do-not-reply@cashien.online', mail_adds={'first_name':first_name, 'email':email}, message =code )
+                    #send_email(subject = 'Confirm your email.', from_email='do-not-reply@cashien.online', mail_adds={'first_name':first_name, 'email':email}, message =code )
                     #Only create a temp user if it doesnt exist 
                     try :
                         temp_user = TempUser.objects.get(email = email)
