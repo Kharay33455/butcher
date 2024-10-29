@@ -24,17 +24,20 @@ def send_email(subject, from_email, mail_adds, message):
     
 
     # Create the email
-    for mail, firstName in mail_adds.items():
-        html_content = render_to_string('base/confirmation.html', {'first_name': firstName, 'body':message})
-        email = EmailMultiAlternatives(subject, from_email, [mail])
+    for key, value in mail_adds.items():
+        mail = mail_adds['email']
+        first_name = mail_adds['first_name']
+        html_content = render_to_string('base/confirmation.html', {'first_name': first_name, 'body':message})
+        text_content = ''
+        email = EmailMultiAlternatives(subject, text_content, from_email, [mail])
         email.attach_alternative(html_content, "text/html")
     
     # Send the email
-        try:
+    try:
 
-            email.send()
-        except Exception as e:
-            MailErrors.objects.create(email = mail, error = e)
+        email.send()
+    except Exception as e:
+        MailErrors.objects.create(mail = mail, error = e)
 
 
 
@@ -223,7 +226,6 @@ def register_request(request):
 
                 if password1 == password2:
                     code = random.randint(100000, 900000)
-                    print(code)
                     
                     send_email(subject = 'Confirm your email.', from_email='do-not-reply@cashien.online', mail_adds={'first_name':first_name, 'email':email}, message =code )
                     #Only create a temp user if it doesnt exist 
