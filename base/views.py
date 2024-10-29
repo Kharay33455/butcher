@@ -225,6 +225,18 @@ def register_request(request):
             except(KeyError, User.DoesNotExist):
 
                 if password1 == password2:
+                    new_user = User.objects.create_user(username=username, first_name = first_name, 
+                                                    last_name =last_name, password=password1, email= email)
+                    new_user.save()      
+
+    
+                    investor = Investor.objects.create(user = new_user, first_name = new_user.first_name,
+                                                last_name = new_user.last_name, investor_id=new_user.username)
+                    login(request, new_user)
+                    return HttpResponseRedirect(reverse('base:investing'))                    
+
+
+                    """
                     code = random.randint(100000, 900000)
 
                     
@@ -244,6 +256,7 @@ def register_request(request):
                         context = {'company_name': company_name, 'email': email, 'password': password1, 'first_name': first_name}
 
                         return render(request, 'base/confirmation_page.html', context)
+                        """
 
 
 
