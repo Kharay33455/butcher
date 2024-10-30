@@ -394,7 +394,12 @@ def profile(request):
         active_accounts = len(active_accounts)
         inactive_accounts= len(inactive_accounts)
         bal = investor.holdings + investor.earnings
-        percentage = investor.earnings / investor.holdings
+        try:
+
+            percentage = investor.earnings / investor.holdings
+        except (ZeroDivisionError):
+            percentage = 0
+        
         percentage *= 100
         
         context = {'investor':investor, 'aa':active_accounts, 'in':inactive_accounts, 'company_name':company_name, 'bal':bal, 'percentage':int( percentage )}
