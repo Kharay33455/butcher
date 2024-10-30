@@ -10,6 +10,22 @@
     bottom: 30px;
 }
 
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    overflow-wrap: anywhere;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
 .form-wrapper{
     margin: 5%;
     padding: 3%;
