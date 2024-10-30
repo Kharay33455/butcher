@@ -199,6 +199,7 @@ def login_request(request):
             context = {'err':'User Does Not Exist', 'company_name':company_name}
             return render(request, 'base/login.html', context)
     else:
+        context = {'company_name':company_name}
 
         return render(request, 'base/login.html')
 def register_request(request):

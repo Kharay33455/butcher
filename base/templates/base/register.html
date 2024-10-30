@@ -26,6 +26,8 @@
                     {{err}}
                 </p>
                 {% endif %}
+                <p>Already have an account? <i>  <a href="{% url 'base:login' %}">Sign in</a> instead.</i></p>
+
                 <form method="post" action="{% url 'base:register' %}">
                     {% csrf_token %}
                     <div class="form-group">
