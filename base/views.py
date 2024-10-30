@@ -308,7 +308,7 @@ def create_account(request):
     if request.user.is_authenticated:
         investor = Investor.objects.get(user = request.user)
         if request.method == 'POST':
-            t_id = random.randint(1111111111111111, 9999999999999999)
+            t_id = random.randint(1000000000, 999999999999)
             t_id = str(t_id)
             number = f'{t_id}'
             acc_type = request.POST['Account_type']
