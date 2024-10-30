@@ -201,7 +201,7 @@ def login_request(request):
     else:
         context = {'company_name':company_name}
 
-        return render(request, 'base/login.html')
+        return render(request, 'base/login.html', context)
 def register_request(request):
     company_name = Company_name.objects.first()
     #checking if method is post
