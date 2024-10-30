@@ -19,52 +19,74 @@
                 <h3>
                     {{acc.account_type}}
                 </h3> <br>
-                <b>
-
-<p>
-                <span>
-                    Account Number
-                </span>
-                <span class="tabular">
-                    {{acc.number}}
-                </span> 
-            </p>
 
 
 
-<p>      
-                <span>
-                    Account Class
-                </span>
-                <span class="tabular">
-                    {{acc.level}}
-                </span>
-            </p>
+                <div>
+                    <table style="width: 100%; font-weight: bolder;">
+                        <tbody>
+                            <b>
+                            <tr>
+                                <td>
+                                    Account Number:
+                                </td>
+                                <td class="tabular">
+                                    {{acc.number}}
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    Account Class:
+                                </td>
+                                <td class="tabular">
+                                    {{acc.level}}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Price:
+                                </td>
+                                <td class="tabular">
+                                    ${{acc.balance}}
+                                </td>
+                            </tr>
+
+                          
+                        </b>
+                        </tbody>
+                    </table>
+<br>
+                    <table style="width: 100%;">
+                        <thead style="font-weight: bold;">
+                            <tr>
+                                <td>
+                                    Wallet Type:
+                                </td>
+                                <td class="tabular">
+                                    Wallet Address
+                                </td>
+                            </tr>
+
+                            {% for wall in wallets %}
+                            <tr>
+                                <td >
+                                    {{wall.currency}}
+                            </td>
+                            <td class="tabular">
+                                {{wall.address}}
+                            </td>
+                            </tr>
+                            {% endfor %}
+                        </thead>
+                        <td>
+
+                        </td>
+                    </table>
+                </div>
 
 
-            <p>      
-                <span>
-                    Cost
-                </span>
-                <span class="tabular">
-                    ${{acc.balance}}
-                </span>
-            </p>
-
-
-            <p>      
-
-            {% for wall in wallets %}
-                <span>
-                    {{wall.currency}}
-                </span>
-                <span class="tabular">
-                    {{wall.address}}
-                </span> <br> <br>
-            {% endfor %}
-        </p>
-
-            </b>
             <a href="{% url 'base:pending' number=acc.number %}" class="btn btn-block btn-success">I have completed this transaction</a>
 
             </p>
