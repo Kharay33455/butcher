@@ -195,18 +195,17 @@ h1 {
 
 }
 
-.my_row3::after {
-    content: '';
-    display: table;
-    clear: both;
+
+.my_row3{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 30px;
 }
 
-.my_col3 {
-    float: left;
-    width: 50%;
-    padding: 5%;
-
+.my_col3{
+    height: 40vh; background-size:cover; margin-bottom: 30px; background-repeat: no-repeat;
 }
+
 
 .my_row4::after {
     content: '';
@@ -368,6 +367,12 @@ h1 {
     }
     .percent{
         font-size: 17px;
+    }
+    .my_row3{
+        display: block;
+    }
+    .my_col3{
+        height: 30vh; background-size:cover; margin-bottom: 30px;
     }
 
 }
